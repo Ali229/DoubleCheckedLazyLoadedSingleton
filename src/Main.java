@@ -1,3 +1,7 @@
+/**
+ * @author Muhammad Ali
+ */
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -17,6 +21,7 @@ public class Main {
     }
 }
 
+//All types of weapon are defined in this method. Low and High power levels are defined within the same type.
 enum WeaponType {
 
     FutureLaser("9 Volt Blaster", 5, 100, "Death Ray", 1, 10000),
@@ -47,11 +52,13 @@ enum WeaponType {
     }
 }
 
+//Every weapon has two types of power levels
 enum WeaponPower {
     LOW_POWER,
     HIGH_POWER
 }
 
+//The factory creates a Weapon and returns it to StandardWeapons
 class WeaponsFactory {
     HashMap<WeaponType, Weapon> Weapons = new HashMap<>();
 
@@ -95,6 +102,7 @@ class WeaponsFactory {
     }
 }
 
+//Main weapon class that allows the creation of all types of weapons(Sub classes)
 abstract class Weapon {
 
     private String _name;
@@ -259,6 +267,8 @@ class WeaponMedievalStinkyFoot extends Weapon {
     }
 }
 
+//This class has the singleton, which is also double checked,
+//locking any thread until the prior thread has completed executing code.
 final class StandardWeapons {
     private static final Object syncLock = new Object();
     private static volatile List<Weapon> _swl;
